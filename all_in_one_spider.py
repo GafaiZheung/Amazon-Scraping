@@ -29,7 +29,7 @@ logger.addHandler(file_handler)
 
 # 导入现有模块的关键函数和配置
 from amazon_scraper import (
-    fetch_product_data, fetch_vine_count, handle_continue_shopping,
+    fetch_product_data, handle_continue_shopping,
     DOMAIN_MAP, DEFAULT_USER_AGENT, extract_bsr_from_node
 )
 from basic_information_identification import extract_basic_information
@@ -40,6 +40,8 @@ from analyze_product_features import (
     get_yolo_model, download_image, yolo_detect_main_object,
     get_dominant_color, infer_shape_from_box
 )
+
+from VINE_Sccrape import fetch_vine_count
 
 
 async def fetch_all_product_info(page, asin, country):
@@ -131,7 +133,7 @@ async def run_scraper_batch(df_batch, profile_dir, concurrency, shared_results, 
         context = await pw.chromium.launch_persistent_context(
             profile_dir,
             headless=True,
-            executable_path=r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+            # executable_path=r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
             user_agent=DEFAULT_USER_AGENT,
             locale='en-US',
             timezone_id='America/New_York',

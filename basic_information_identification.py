@@ -315,7 +315,7 @@ async def run_scraper(df, results_list_ref, concurrency, profile_dir):
         context = await p.chromium.launch_persistent_context(
             profile_dir,
             headless=True,  # 设置为True可隐藏浏览器窗口
-            executable_path=r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+            # executable_path=r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
             user_agent=DEFAULT_USER_AGENT,
             locale='en-US',
             timezone_id='America/New_York',

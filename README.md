@@ -138,7 +138,7 @@ python all_in_one_spider.py -i input.csv -o result.csv --processes 1 --batch-siz
 
 # 生产示例（多进程）
 python all_in_one_spider.py \
-  -i input.csv -o result.csv \
+  -i input_less.csv -o result.csv \
   --processes 4 --concurrency 3 \
   --batch-size 100 --sleep-time 8 \
   --analyze-batch-size 20 --analyze-sleep 3

@@ -127,7 +127,7 @@ async def fetch_vine_count(page, asin: str, domain: str):
 
         # JS 评估 Vine 标签 - 改进的健壮性实现
         try:
-            count = await page.evaluate('''() => {
+            count = await page.evaluate(r'''() => {
                 // 多种VINE标识符策略
                 let vineCount = 0;
                 
@@ -191,7 +191,7 @@ async def fetch_vine_count(page, asin: str, domain: str):
         # 处理最后一页前三条评分 - 改进的健壮性实现
         if page_num == total_pages:
             try:
-                avg_rating = await page.evaluate('''() => {
+                avg_rating = await page.evaluate(r'''() => {
                     // 基于测试结果优化的评分选择器策略
                     const selectors = [
                         // 最有效的选择器放在前面（基于德国站点测试结果）
@@ -212,9 +212,9 @@ async def fetch_vine_count(page, asin: str, domain: str):
                             elements.slice(0, 3).forEach(el => {
                                 const text = el.textContent || '';
                                 // 支持多语言评分文本匹配（英语、德语等）
-                                const match = text.match(/(\d+(?:[,\.]\d+)?)\s*(von|out\s*of)\s*5\s*(stern|star)/i) || 
-                                             text.match(/(\d+(?:[,\.]\d+)?)\s*out\s*of\s*5/i) || 
-                                             text.match(/(\d+(?:[,\.]\d+)?)/);
+                                const match = text.match(/(\\d+(?:[,\\.]\\d+)?)\\s*(von|out\\s*of)\\s*5\\s*(stern|star)/i) || 
+                                             text.match(/(\\d+(?:[,\\.]\\d+)?)\\s*out\\s*of\\s*5/i) || 
+                                             text.match(/(\\d+(?:[,\\.]\\d+)?)/);
                                 if (match) {
                                     // 处理不同的小数点格式（逗号/点号）
                                     const rating = parseFloat(match[1].replace(',', '.'));
@@ -259,8 +259,8 @@ async def fetch_vine_count(page, asin: str, domain: str):
                                 const ratingEl = container.querySelector(selector);
                                 if (ratingEl) {
                                     const text = ratingEl.textContent || '';
-                                    const match = text.match(/(\d+(?:[,\.]\d+)?)\s*(von|out\s*of)\s*5/i) || 
-                                                 text.match(/(\d+(?:[,\.]\d+)?)/);
+                                    const match = text.match(/(\\d+(?:[,\\.]\\d+)?)\\s*(von|out\\s*of)\\s*5/i) || 
+                                                 text.match(/(\\d+(?:[,\\.]\\d+)?)/);
                                     if (match) {
                                         const rating = parseFloat(match[1].replace(',', '.'));
                                         if (rating >= 1 && rating <= 5) {

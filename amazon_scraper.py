@@ -976,7 +976,7 @@ async def run_scraper(df, results_list_ref, concurrency, profile_dir, progress_c
         context = await pw.chromium.launch_persistent_context(
             profile_dir,
             headless=True,
-            executable_path=r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+            # executable_path=r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
             user_agent=DEFAULT_USER_AGENT,
             locale=target_locale,
             timezone_id=target_timezone,
