@@ -139,7 +139,7 @@ async def run_scraper_batch(df_batch, profile_dir, concurrency, shared_results, 
                     context = await pw.chromium.launch_persistent_context(
                         profile_dir,
                         headless=True,
-                        executable_path=r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+                        # executable_path=r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
                         user_agent=DEFAULT_USER_AGENT,
                         locale='en-US',
                         timezone_id='America/New_York',
@@ -301,7 +301,7 @@ async def run_bsr_update_batch(df_batch, profile_dir, concurrency, shared_result
                     context = await pw.chromium.launch_persistent_context(
                         profile_dir,
                         headless=True,
-                        executable_path=r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+                        # executable_path=r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
                         user_agent=DEFAULT_USER_AGENT,
                         locale='en-US',
                         timezone_id='America/New_York',

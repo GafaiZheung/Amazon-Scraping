@@ -332,7 +332,7 @@ async def run_vine_scraper(df: pd.DataFrame, results_list_ref: list, concurrency
         context = await pw.chromium.launch_persistent_context(
             user_data_dir,
             headless=False,
-            executable_path=r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+            # executable_path=r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
             user_agent=DEFAULT_USER_AGENT,
             locale=target_locale,
             timezone_id=target_timezone,
@@ -412,7 +412,7 @@ async def login_flow(profile_dir: str, login_url: str, country: str):
         context = await pw.chromium.launch_persistent_context(
             profile_dir,
             headless=False,
-            executable_path=r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+            # executable_path=r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
             user_agent=DEFAULT_USER_AGENT,
             locale=target_locale,
             timezone_id=target_timezone,
